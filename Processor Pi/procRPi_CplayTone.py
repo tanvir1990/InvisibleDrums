@@ -1,38 +1,42 @@
-import socket, sys, time
-isHit = False
+import socket
+import winsound
+
+UDP_IP_ADDRESS = "127.0.0.1"
+UDP_PORT_NO = 6789
+tonename = "90000 clap"
+isHit = True
 
 def playTone():
-    print ('Stream finished playing')
-    snd = Sound() 
-    snd.read('ex1.wav') 
-    snd.play()
     if isHit == False:
         print ('Stream not playing')
+    else:
+        print ('Stream finished playing')
+        winsound.PlaySound(tonename,winsound.SND_FILENAME) 
+
+    
     
 def resetisHit():
     isHit = False
     
 def procRPi_UDPreceiverFP():    
-    textport = sys.argv[1]
-    
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    port = int(textport)
-    server_address = ('localhost', port)
-    s.bind(server_address)
-    
+    serverSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    serverSock.bind((UDP_IP_ADDRESS, UDP_PORT_NO))
     while True:
-        print ("Waiting to receive on port %d : press Ctrl-C or Ctrl-Break to stop " % port)
-        buf, address = s.recvfrom(2048)
-        if not len(buf):
-            break
-        print ("Received %s bytes from %s %s: " % (len(buf), address, buf ))
-        s.shutdown(1)
+        data, addr = serverSock.recvfrom(1024)
+        print ("isHit: ", data)
+        isHit = data
+        
+while(1):
+    #procRPi_UDPreceiverFP()
+    playTone()
+    resetisHit()
 
-while (1):
-    procRPi_UDPreceiverFP()
-    if isHit:
-        playTone()
-        resetisHit()
+        
+
+
+
+    
+    
 
 
   
