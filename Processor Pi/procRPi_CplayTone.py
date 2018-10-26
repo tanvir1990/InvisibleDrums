@@ -27,7 +27,7 @@ def procRPi_UDPreceiverFP():
         isHit = data
         
 while(1):
-    #procRPi_UDPreceiverFP()
+    procRPi_UDPreceiverFP()
     playTone()
     resetisHit()
 
