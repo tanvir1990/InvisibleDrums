@@ -37,15 +37,24 @@ public class accessIVDB
       ResultSet rs = st.executeQuery(query);
       
       // iterate through the java resultset
+      /* Things need to improve
+       * 
+       * 1. At this moment it's calling both the sound files
+       * 2. We need to change it to one sound at a time, pack into a package and send it to Processor pi
+       * 3. Access the database as an Array
+       * 
+       */
+     
       while (rs.next())
       {
         int id = rs.getInt("id");
         String checkReturn = rs.getString("checkingReturn");
-        String nameofTone = rs.getString("nameofTone");
+        String toneLink = rs.getString("linktoTone");
+        //new playSound(voice).start();					//Testing if the link works as a file
         
         
         // print the results
-        System.out.format("%s, %s, %s \n", id, checkReturn, nameofTone);
+        System.out.format("%s, %s, %s \n", id, checkReturn, toneLink);
       }
       st.close();
     }
