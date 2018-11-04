@@ -1,4 +1,4 @@
-isHit = False
+isHit = True
 
 def playTone():
     print ('Stream finished playing')

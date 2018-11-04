@@ -1,36 +1,32 @@
 import socket
-import winsound
+import pygame
+import serial
 
-UDP_IP_ADDRESS = "127.0.0.1"
-UDP_PORT_NO = 6789
-tonename = "90000 clap"
-isHit = True
+ser = serial.Serial('/dev/ttyACM3',9600)
+pygame.init();
+tonename = "90000 clap.wav"
+pygame.mixer.music.load(tonename)
+
+isHit = 0
 
 def playTone():
-    if isHit == False:
+    if isHit == 0:
         print ('Stream not playing')
-    else:
+    elif isHit == 1:
         print ('Stream finished playing')
-        winsound.PlaySound(tonename,winsound.SND_FILENAME) 
+        pygame.mixer.music.play()
+        resetisHit()
 
     
     
 def resetisHit():
-    isHit = False
-    
-def procRPi_UDPreceiverFP():    
-    serverSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    serverSock.bind((UDP_IP_ADDRESS, UDP_PORT_NO))
-    while True:
-        data, addr = serverSock.recvfrom(1024)
-        print ("isHit: ", data)
-        isHit = data
-        
-while(1):
-    procRPi_UDPreceiverFP()
-    playTone()
-    resetisHit()
+    isHit = 0
 
+
+while True:
+	isHit=ser.readline()
+	playTone()
+	
         
 
 

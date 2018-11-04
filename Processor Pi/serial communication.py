@@ -20,4 +20,3 @@ print( cleanup(x))
 #ser.write("1") 
 sensorValue = analogRead(sensorPin); #Reads the voltage of the resistor.
 Serial.println(sensorValue); #Writes the voltage on the Serial port.
-}
