@@ -1,0 +1,56 @@
+int led = 13;
+char  charIn;
+
+int sensorPin = A0;    // select the input pin for the potentiometer
+int sensorValue = 0;  // variable to store the value coming from the sensor
+long previousMillis = 0; 
+long interval = 1000;  
+// the setup routine runs once when you press reset:
+
+void setup() {           
+  // initialize the digital pin as an output.
+  pinMode(led, OUTPUT);  
+  Serial.begin(9600); //This initializes the USB as a serial port
+}
+
+void loop() {
+  if (Serial.available()) {
+    delay(5); // warten bis alle Daten da sind
+    while(Serial.available() > 0) {
+    charIn =(char) Serial.read();
+    if (charIn == '1') {
+      digitalWrite(led,HIGH);
+      delay(5000);
+      digitalWrite(led,LOW);
+    }
+  }
+}
+
+
+
+
+Python:
+
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from serial import Serial
+
+ser = Serial('/dev/ttyUSB0', 9600)
+x=ser.readline()
+ser.write('1')
+print(x)
+def cleanup( str ):
+  result = ""
+
+  for c in str:
+    if( (c >= "0") and (c <= "9") ):
+       result += c
+
+  return result
+
+print( cleanup(x))
+#ser.write("1") 
+sensorValue = analogRead(sensorPin); //Reads the voltage of the resistor.
+Serial.println(sensorValue); //Writes the voltage on the Serial port.
+}
