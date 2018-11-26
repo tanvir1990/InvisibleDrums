@@ -4,7 +4,7 @@ import serial
 
 ser = serial.Serial('/dev/ttyACM1',9600)
 pygame.init();
-tonename = "90000 clap.wav"
+tonename = "/tone/tone.wav"
 pygame.mixer.music.load(tonename)
 isHit = 1
 
