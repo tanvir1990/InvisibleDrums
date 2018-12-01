@@ -1,7 +1,8 @@
-package tcp;
+package udp;
 
-import java.net.*;
-import java.util.Scanner;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class UDPSender2 implements Runnable  {
 	public UDPSender2(){
@@ -9,9 +10,7 @@ public class UDPSender2 implements Runnable  {
 	}
 	
 	public void send(String command,int i) throws Exception{
-	      // Check the arguments
-
-  
+	      // Check the arguments 
 	      DatagramSocket socket = null ;
 	      // Convert the arguments first, to ensure that they are valid
 	      InetAddress host = InetAddress.getByName( "localhost" ) ;
@@ -22,30 +21,15 @@ public class UDPSender2 implements Runnable  {
 	      DatagramPacket packet = new DatagramPacket( data, data.length, host, port ) ;
 	      socket.send( packet ) ;
 	      socket.close();
-
+	      System.out.println( "command sent" );
    }
 	public static void main(String[] args) throws Exception {
-		UDPSender2 sender = new UDPSender2();
-		Scanner in;
-		in = new Scanner (System.in);
-		String message = null;
-		System.out.println("Enter operation id  ");
-		message = in.nextLine();
-		sender.send(message,1234);
-		in.close();
-
+		UDPSender2 sender2 = new UDPSender2();
+		sender2.send("wow",1235);
 	}
-	@Override 
+	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-				
-				String[] args = new String[0];
-				try {
-					UDPSender2.main(args);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 		
 	}
 }
