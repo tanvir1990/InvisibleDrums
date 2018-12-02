@@ -7,7 +7,7 @@ public class sending {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
 		UDPSender sender = new UDPSender();
-		UDPSender2 sender2 = new UDPSender2();
+		UDPSender sender2 = new UDPSender();
 		Scanner in;
 	    in = new Scanner (System.in);
 	    System.out.println("please enter operation code:");
