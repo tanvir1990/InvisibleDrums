@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=myDatabase
+comment0.target=void\ viewAllTone(java.lang.String)
+comment0.text=\n\ \ \ \ public\ static\ void\ main\ (String[]\ args)\ throws\ ClassNotFoundException,\ SQLException\n\ \ \ \ {\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ DB\ idrums\ \=\ new\ DB();\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ String\ toneName\ \=\ "clap";\n\ \ \ \ \ \ \ \ String\ path\ \=\ "/home/pi/Desktop/Sound\ Packs/\ blooze.wav";\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ idrums.addTone(toneid,\ toneName,\ path);\n\ \ \ \ \ \ \ \ //idrums.deleteTone(toneid);\n\ \ \ \ \ \ \ \ idrums.viewAllTone(myDatabase);\n\ \ \ \ \ \ \ \ //idrums.viewspecificTone(toneid);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \n}
+comment1.params=toneid\ tonename\ tonepath
+comment1.target=void\ addTone(int,\ java.lang.String,\ java.lang.String)
+comment2.params=deleteName
+comment2.target=void\ deleteTone(java.lang.String)
+comment3.params=id
+comment3.target=void\ viewspecificTone(int)
+comment4.params=file
+comment4.target=java.lang.String\ getFileExtension(java.lang.String)
+comment5.params=
+comment5.target=int\ getIdfromDB()
+numComments=6
