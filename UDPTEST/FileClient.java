@@ -5,11 +5,14 @@ import java.net.*;
 public class FileClient {
 	public static void main(String[] args) throws Exception{
 		
+		Socket sr=new Socket("localhost",4333);
+		
+		
 		FileInputStream fr= new FileInputStream("M:\\90000 clap.wav");
+		OutputStream os = sr.getOutputStream();
+		
 		byte b[]=new byte[40000];
 		fr.read(b, 0, b.length);
-		Socket sr=new Socket("localhost",4333);
-		OutputStream os = sr.getOutputStream();
 		os.write(b,0,b.length);
 		
 		

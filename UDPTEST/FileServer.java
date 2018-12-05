@@ -8,12 +8,18 @@ public class FileServer {
 	
 	}
 	public static void main(String[] args) throws Exception{
-		ServerSocket s = new ServerSocket(4333);
 		
+		ServerSocket s = new ServerSocket(4333);
 		Socket sr= s.accept();
-		byte b[]= new byte[40000];
+		
+		
+		
+	
 		InputStream is=sr.getInputStream();
 		FileOutputStream fr= new FileOutputStream("M:\\receive\\900001 clap.wav");
+		
+		
+		byte b[]= new byte[40000];
 		is.read(b,0,b.length);
 		fr.write(b,0,b.length);
 		
