@@ -16,11 +16,13 @@ public class FileServer implements Runnable {
 	}
 	
 	/* Receive the binary array from stream and writes into an empty file
+	 * Write the Bytes to the empty file
 	 * 
-	 * @param s The ServerSocket used for transfer
 	 * @param name The name for the created empty file, same as receiving file 
+	 * @param port The selected port number
 	 */
-	public void receive(ServerSocket s,String name) throws Exception {
+	public void receive(String name,int port) throws Exception {
+		ServerSocket s = new ServerSocket(port);
 		Socket sr= s.accept(); // accept Socket and waiting for connection
 		byte b[]= new byte[40000];
 		InputStream is=sr.getInputStream();
@@ -30,27 +32,15 @@ public class FileServer implements Runnable {
 		fr.close();
 	}
 	
-	/* This method creates the ServerSocket objecct and calls receive
-	 * Can be combined with method receive
-	 * 
-	 * @param port The selected port number
-	 * @param name The name for the created empty file, same as receiving file
-	 */
-	public void applyreceive(int port,String name) throws Exception {
-		ServerSocket s = new ServerSocket(port);
-		FileServer receiver = new FileServer();
-		receiver.receive(s,name);
-		s.close();
-	}
+
 	/*
 	 * This is the main method 
 	 * Used for run the method itself
 	 * @param args Unused
 	 */
 	public static void main(String[] args) throws Exception{
-		ServerSocket s = new ServerSocket(1239);
 		FileServer receiver = new FileServer();
-		receiver.receive(s,"/home/pi/Desktop/receivingtone/");
+		receiver.receive("/home/pi/Desktop/receivingtone/", 1239);
 		s.close();
 	}
 	
@@ -63,7 +53,7 @@ public class FileServer implements Runnable {
 		// TODO Auto-generated method stub
 		FileServer receiver = new FileServer();
 		try {
-			receiver.applyreceive(1234,"/home/pi/Desktop/receivingtone/tone.wav");
+			receiver.receive("/home/pi/Desktop/receivingtone/tone.wav", 1234);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

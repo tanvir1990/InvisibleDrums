@@ -18,10 +18,11 @@ public class FileClient implements Runnable{
 	
 	/* Sends the selected file into Stream
 	 *  
-	 * @param sr The Socket object used during transfer
+	 * @param port The port number thas going to be used
 	 * @param path The path to store the file 
 	 */
-	public void send(Socket sr,String path) throws Exception {
+	public void send(String path, int port) throws Exception {
+		Socket sr=new Socket("10.0.0.71",port);
 		FileInputStream fr= new FileInputStream(path);
 		byte b[]=new byte[40000];
 		fr.read(b, 0, b.length);
@@ -30,18 +31,7 @@ public class FileClient implements Runnable{
 		fr.close();
 	}
 	
-	/*
-	 * Open the socket and call method send
-	 * 
-	 * @param port The port number thas going to be used
-	 * 
-	 */
-	public void applysend(String path,int port) throws Exception {
-		Socket sr=new Socket("10.0.0.71",port);
-		FileClient sender = new FileClient();
-		sender.send(sr,path);
-		sr.close();
-	}
+	
 	
 	/*
 	 * This is the man method that checks if this class runs without error.
@@ -50,9 +40,8 @@ public class FileClient implements Runnable{
 	 */
 	
 	public static void main(String[] args) throws Exception{
-		Socket sr=new Socket("10.0.0.71",19123);
 		FileClient sender = new FileClient();
-		sender.send(sr,"/home/pi/Desktop/Sound Packs/clap.wav");
+		sender.send("/home/pi/Desktop/Sound Packs/clap.wav", 19123);
 		sr.close();
 		
 	}
@@ -66,7 +55,7 @@ public class FileClient implements Runnable{
 		// TODO Auto-generated method stub
 		FileClient sender = new FileClient();
 		try {
-			sender.applysend("",1234);
+			sender.send("",1234);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
