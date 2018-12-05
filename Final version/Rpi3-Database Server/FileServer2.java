@@ -1,10 +1,20 @@
-//Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
- 
-
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+
+
+
+/*
+ * FileServer2 is the Receiver for TCP file transfer 
+ * Extra file can be deleted
+ * Same as FileServer
+ * 
+ * @author Zichen Wang
+ * @author Zhi Qiao
+ * @since 2018-12-03
+ */
 
 public class FileServer2 implements Runnable  {
 public FileServer2() {

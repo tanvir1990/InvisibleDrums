@@ -39,7 +39,7 @@ public class receiving {
             String path=databasefolder+filename;
             
                 if(!filename.isEmpty()) {
-                    fileserver.applyreceive(1238, path);
+                    fileserver.receive(path, 1238);
                     
                 }
             
@@ -73,7 +73,7 @@ public class receiving {
             String filename = receiver2.getMessage();
             System.out.println("set:" + filename+" as new tone");
             if(!filename.isEmpty()) {
-                fileserver.applyreceive(1238, filename);
+                fileserver.receive(filename, 1238);
             }
             String path=databasefolder+filename;
             
