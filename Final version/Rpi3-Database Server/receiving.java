@@ -80,7 +80,7 @@ public class receiving {
             for(int y = 0;y<100000;y++){}
             
             if(!filename.isEmpty()) {
-                fileclient.applysend(path,1240);
+                fileclient.send(path,1240);
             }
             
 
