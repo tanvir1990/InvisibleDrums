@@ -1,5 +1,12 @@
 //Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
- 
+
+/*
+ * FileClient is the sender for TCP file transfer
+ *
+ * @author Zhi Qiao
+ * @author Zichen Wang
+ * @since 2018-12-03
+ */
 
 import java.net.*;
 
@@ -7,7 +14,11 @@ public class UDPSender implements Runnable  {
 	public UDPSender(){
 		
 	}
-	
+	/* Sends the String into Stream
+	 *
+	 * @param command The String commeent to send
+	 * @param i The port number thas going to be used
+	 */
 	public void send(String command,int i) throws Exception{
 	      // Check the arguments  
 	      DatagramSocket socket = null ;

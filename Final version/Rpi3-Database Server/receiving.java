@@ -1,12 +1,24 @@
 
 //Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
- 
-//this can 
+
+/*
+ * FileClient is the sender for TCP file transfer
+ *
+ * @author Zhi Qiao
+ * @author Zichen Wang
+ * @since 2018-12-03
+ */
 
 public class receiving {
     static String databasefolder="/home/pi/Desktop/receivingtone/";
    
-
+    /*
+     * apply while loop to make the system work automatically
+     * the user needs to initiallize the system for the first load
+     * edit file saving folder for receiving
+     * set the port for each UDP and TCP components
+     *
+     */
     public static void main(String[] args) throws Exception {
         UDPReceiver receiver = new UDPReceiver();
         UDPReceiver2 receiver2 = new UDPReceiver2();
