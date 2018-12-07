@@ -2,14 +2,14 @@
 //Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
 
 /*
- * FileClient is the sender for TCP file transfer
+ * Server is the operation Controller of System
  *
  * @author Zhi Qiao
  * @author Zichen Wang
  * @since 2018-12-03
  */
 
-public class receiving {
+public class Server {
     static String databasefolder="/home/pi/Desktop/receivingtone/";
    
     /*

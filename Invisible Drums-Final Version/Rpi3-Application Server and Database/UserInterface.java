@@ -1,10 +1,16 @@
 //Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
 
-
+/*
+ * User Interface is the operation Controller of System
+ *
+ * @author Zhi Qiao
+ * @author Zichen Wang
+ * @since 2018-12-03
+ */
 
 import java.util.Scanner;
 
-public class sending {
+public class UserInterface {
 	//identified where the user will read the file from
 	static String databasefolder="C:\\Users\\zhiqiao\\Desktop\\voice\\";
 
