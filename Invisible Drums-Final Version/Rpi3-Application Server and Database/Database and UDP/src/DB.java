@@ -1,38 +1,32 @@
+/**
+ * Project Invisible Drums, SYSC 3010 Monday Group 7
+ * @author Mohammed Tanvir Hossain
+ * @Version Final, December 3rd, 2018
+ *
+ */
+
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.sql.*;
 
 
 
+/*
+ * This is a  Public Class DB (short form for Database)
+ * 1. It has 4 methods. These methods are used by the android application to
+ * add, store, delete or set music tones inside the database.
+ * 2. DB has JDBC connection method in it. For every method it will connect to jdbc using the jdbc connector.
+ * 3. Name of the database is 'idrums'
+ */
 
 public class DB {
     
-
-    //Point 1 Not sure how it will run Pi
+	//Here name of the MYSQL database is 'idrums'
     static String myDatabase = "jdbc:mysql://localhost:3306/idrums"; 
     int ID =0;
     
-    /*
-    public static void main (String[] args) throws ClassNotFoundException, SQLException
-    {
-        
-        DB idrums = new DB();
-        
-        
-        String toneName = "clap";
-        String path = "/home/pi/Desktop/Sound Packs/ blooze.wav";
-        
-        idrums.addTone(toneid, toneName, path);
-        //idrums.deleteTone(toneid);
-        idrums.viewAllTone(myDatabase);
-        //idrums.viewspecificTone(toneid);
-        
-        
-        
-    } */
-
-
-    
+   
     public void viewAllTone(String myDatabase) throws SQLException
     {   
         
@@ -50,13 +44,17 @@ public class DB {
             System.out.format("%s, %s, %s, %s\n", id, checkReturn, toneLink, f);
           }
         
-        //These statements might help closing the communication? Not sure yet. Need to figure it out
+   
         st.close();
         conn.close();
     }
 
     
-    
+    /*
+     * The method addTone adds a drum sample tone inside the database
+     * @param tondeID, name of the tone and the path of the tone
+     * @return void
+     */
     
     public void addTone(int toneid, String tonename, String tonepath )
     {
@@ -64,15 +62,9 @@ public class DB {
         Statement st = null;
         
         DB id = new DB();
-        //String ext = id.getFileExtension(tonepath);
-        
-        //if (ext.equals("")) { System.out.println("Empty file Received");}
-        
-        //else if (ext.equals(".wav")) {
+
         
         try{
-              //lass.forName("com.mysql.jdbc.Driver");
-              //STEP: Open a connection
               
               conn = DriverManager.getConnection(myDatabase, "root3", "1234");
               System.out.println("Connected database successfully...");
@@ -105,10 +97,14 @@ public class DB {
             //end try
            System.out.println("Goodbye!");
         } // end of finally try
-        } // end of the if loop
-        
-        
-    // end of addTone()
+    } //end of addTone()
+    
+    
+    /*
+     * The method deleteTone deletes a drum sample tone inside the database
+     * @param 
+     * @return 
+     */
     
     public void deleteTone(String deleteName)
     {
@@ -129,20 +125,7 @@ public class DB {
               //STEP 4: Execute a query
               System.out.println("Creating statement...");
               stmt = conn.createStatement();
-              
-              
-              //Match the name 
-          /*  
-          while (rs.next())
-          {
-                String name = rs.getString("Name");
-                if (name.equals(deleteName)
-                {
-                    break;
-                }
-                
-                //System.out.format("%s, %s, %s, %s\n", id, checkReturn, toneLink, f);
-          } */
+
               
               
               String sql = "DELETE FROM tones WHERE Name = '"+deleteName+"'";
@@ -173,7 +156,12 @@ public class DB {
            }//end try
            System.out.println("Goodbye!");
         
-    }
+    } //end of deleteTone
+    
+    
+    /*
+     * Method viewSpecific Tone prints out any desired tone from the entries of database
+     */
     
     public void viewspecificTone(int id) throws SQLException
     {   
@@ -192,21 +180,15 @@ public class DB {
         }
             rs.close();
         
-        //These statements might help closing the communication? Not sure yet. Need to figure it out
+
         st.close();
         conn.close();
     }
     
-    
-    
-    public  String getFileExtension(String file) {
-      
-        String fileName = file;
-        String ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+    /*
+     * Method getIdfromDB() returns the id for latest entry from the database
+     */
 
-        
-        return ext;
-    }
     
     public int getIdfromDB() throws SQLException
     {
@@ -222,35 +204,13 @@ public class DB {
 	        
 	      }
 		
-		//These statements might help closing the communication? Not sure yet. Need to figure it out
+
 		st.close();
 		conn.close();
 		return id;
     }
     
-    /*   
-    public string getNameoftheTone(String myDatabase) throws SQLException
-    {   
-        
-        Connection conn = DriverManager.getConnection(myDatabase, "root3", "1234"); 
-        String query = "SELECT * FROM tones";
-        Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery(query);
-    
-        while (rs.next())
-          {
-            int id = rs.getInt("id");
-            String checkReturn = rs.getString("Name");
-            String toneLink = rs.getString("LinktoTone");
-            Blob f = rs.getBlob(4);
-            System.out.format("%s, %s, %s, %s\n", id, checkReturn, toneLink, f);
-          }
-        
-        //These statements might help closing the communication? Not sure yet. Need to figure it out
-        st.close();
-        conn.close();
-    }
-    */
+
     
 
 }

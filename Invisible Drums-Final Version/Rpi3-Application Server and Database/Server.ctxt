@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Server
-comment0.text=\r\n\ Server\ is\ the\ operation\ Controller\ of\ System\r\n\r\n\ @author\ Zhi\ Qiao\r\n\ @author\ Zichen\ Wang\r\n\ @since\ 2018-12-03\r\n
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment1.text=\r\n\ apply\ while\ loop\ to\ make\ the\ system\ work\ automatically\r\n\ the\ user\ needs\ to\ initiallize\ the\ system\ for\ the\ first\ load\r\n\ edit\ file\ saving\ folder\ for\ receiving\r\n\ set\ the\ port\ for\ each\ UDP\ and\ TCP\ components\r\n\r\n
-numComments=2
