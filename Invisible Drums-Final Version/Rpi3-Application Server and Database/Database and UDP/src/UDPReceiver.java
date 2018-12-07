@@ -1,13 +1,10 @@
-//Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
-
 /*
- * FileClient is the sender for TCP file transfer
- *
+ * UDPReceiver is used to receive the Operation commands
+ * SYSC 3010 M-7
  * @author Zhi Qiao
  * @author Zichen Wang
  * @since 2018-12-03
  */
-
 import java.net.*;
 
 public class UDPReceiver implements Runnable  {
@@ -39,10 +36,21 @@ public class UDPReceiver implements Runnable  {
 		message = new String(packet.getData()).trim();
 		System.out.println("operation id: " + message ) ;
 	}
+	
+	/*
+	 * This is the main method 
+	 * Used for run the method itself
+	 * @param args Unused
+	 */
 	public static void main( String args[] ) throws Exception{
 		UDPReceiver receiver = new UDPReceiver();
 		receiver.applyreceive(1234);
 	}
+	/*
+	 * This method is used to get the message
+	 * 
+	 * @return this.message The message received by the receiver 
+	 */
 	public String getMessage() {
 		return this.message;
 	}

@@ -1,9 +1,6 @@
-
-//Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
-
 /*
  * Server is the operation Controller of System
- *
+ * SYSC 3010 M-7
  * @author Zhi Qiao
  * @author Zichen Wang
  * @since 2018-12-03
