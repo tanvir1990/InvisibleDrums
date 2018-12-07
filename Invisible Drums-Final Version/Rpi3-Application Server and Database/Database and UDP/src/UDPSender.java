@@ -1,13 +1,10 @@
-//Author: Zhi Qiao(qiaoqiaojiushiwo@gmail.com)
-
 /*
- * FileClient is the sender for TCP file transfer
- *
+ * UDPSender is used to send the Operation commands
+ * SYSC 3010 M-7
  * @author Zhi Qiao
  * @author Zichen Wang
  * @since 2018-12-03
  */
-
 import java.net.*;
 
 public class UDPSender implements Runnable  {
@@ -33,6 +30,11 @@ public class UDPSender implements Runnable  {
 	      socket.close();
 	      System.out.println( "command sent" );
    }
+	/*
+	 * This is the main method 
+	 * Used for run the method itself
+	 * @param args Unused
+	 */
 	public static void main(String[] args) throws Exception {
 		UDPSender sender = new UDPSender();
 		sender.send("wow",1234);
